@@ -20,40 +20,40 @@
 
 	<div class="container">
 
-	<h1>EC2 Instances</h1>
+		<h1>EC2 Instances</h1>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Type</th>
-				<th>Availability zone</th>
-				<th>Public IP</th>
-				<th>Security Groups</th>
-				<th>Platform</th>
-				<th>Key Pair</th>
-				<th>Purpose</th>
-			</tr>
-		</thead>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Availability zone</th>
+					<th>Public IP</th>
+					<th>Security Groups</th>
+					<th>Platform</th>
+					<th>Key Pair</th>
+					<th>Purpose</th>
+				</tr>
+			</thead>
 
-		<tbody>
-			<tr th:each="instance : ${instances}">
-				<td><span th:each="tag : ${instance.tags}"
-					th:if="${tag.key == 'Name'}" th:text="${tag.value}">Beating
-						the Blues UK</span></td>
-				<td th:text="${instance.instanceType}">m1.small</td>
-				<td></td>
-				<td th:text="${instance.publicIpAddress}">46.51.144.150</td>
-				<td></td>
-				<td th:text="${instance.platform}">Windows</td>
-				<td th:text="${instance.keyName}">Live</td>
-				<!-- <td th:text="${instance.publicDnsName}">ec2-46-137-130-254.eu-west-1.compute.amazonaws.com</td> -->
-				<td><span th:each="tag : ${instance.tags}"
-					th:if="${tag.key == 'Type'}" th:text="${tag.value}">Web
-						server</span></td>
-			</tr>
-		</tbody>
-	</table>
+			<tbody>
+				<tr th:each="instance : ${instances}">
+					<td><span th:each="tag : ${instance.tags}"
+						th:if="${tag.key == 'Name'}" th:text="${tag.value}">Beating
+							the Blues UK</span></td>
+					<td th:text="${instance.instanceType}">m1.small</td>
+					<td></td>
+					<td th:text="${instance.publicIpAddress}">46.51.144.150</td>
+					<td></td>
+					<td th:text="${instance.platform}">Windows</td>
+					<td th:text="${instance.keyName}">Live</td>
+					<!-- <td th:text="${instance.publicDnsName}">ec2-46-137-130-254.eu-west-1.compute.amazonaws.com</td> -->
+					<td><span th:each="tag : ${instance.tags}"
+						th:if="${tag.key == 'Type'}" th:text="${tag.value}">Web
+							server</span></td>
+				</tr>
+			</tbody>
+		</table>
 
 	</div>
 

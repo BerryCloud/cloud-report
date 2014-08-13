@@ -23,8 +23,7 @@ import com.amazonaws.services.ec2.model.Reservation;
 @Controller
 public class EC2InstancesController {
 
-	static final Logger LOG = LoggerFactory
-			.getLogger(EC2InstancesController.class);
+	static final Logger LOG = LoggerFactory.getLogger(EC2InstancesController.class);
 
 	/**
 	 * @param model
@@ -37,20 +36,16 @@ public class EC2InstancesController {
 
 		Set<Instance> instances = new HashSet<Instance>();
 
-		for (Region region : RegionUtils
-				.getRegionsForService(ServiceAbbreviations.EC2)) {
+		for (Region region : RegionUtils.getRegionsForService(ServiceAbbreviations.EC2)) {
 
 			LOG.debug("Region Name: " + region.getName());
 
-			AmazonEC2 ec2 = region.createClient(AmazonEC2Client.class, null,
-					null);
+			AmazonEC2 ec2 = region.createClient(AmazonEC2Client.class, null, null);
 			ec2.setRegion(region);
 
 			try {
 
-				DescribeInstancesResult instancesResult = ec2
-						.describeInstances();
-
+				DescribeInstancesResult instancesResult = ec2.describeInstances();
 
 				for (Reservation reservation : instancesResult.getReservations()) {
 					instances.addAll(reservation.getInstances());
@@ -65,7 +60,7 @@ public class EC2InstancesController {
 			model.addAttribute("instances", instances);
 
 		}
-		
+
 		return "ec2";
 	}
 }
